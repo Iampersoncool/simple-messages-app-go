@@ -18,8 +18,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	defer db.Close()
-
 	port := GetPort()
 	mux := http.NewServeMux()
 
