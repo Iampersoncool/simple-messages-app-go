@@ -2,6 +2,7 @@ package routes
 
 import (
 	"database/sql"
+	"html"
 	"log"
 	"net/http"
 
@@ -34,7 +35,10 @@ func NewMessage(db *sql.DB) http.HandlerFunc {
 			return
 		}
 
-		_, execErr := stmt.Exec(msg.Content, msg.Color)
+		_, execErr := stmt.Exec(
+			html.EscapeString(msg.Content),
+			html.EscapeString(msg.Color),
+		)
 		if execErr != nil {
 			log.Printf("Error executing statement: %v", err)
 			utils.WriteJson(w, http.StatusInternalServerError, map[string][]string{
