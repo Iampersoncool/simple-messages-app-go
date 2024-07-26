@@ -2,7 +2,7 @@ package main
 
 import "os"
 
-const PortEnvKey = "port"
+const PortEnvKey = "PORT"
 
 func GetPort() string {
 	port := os.Getenv(PortEnvKey)
