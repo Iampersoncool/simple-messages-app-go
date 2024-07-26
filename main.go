@@ -4,12 +4,14 @@ import (
 	"log"
 	"net/http"
 
+	_ "github.com/go-sql-driver/mysql"
+
 	"github.com/Iampersoncool/simple-messages-app/routes"
 )
 
 func main() {
 	db, err := ConnectDatabase(
-		GetDbInfoFromEnv("localhost", "simple_messages_app", "root", "password123"),
+		GetDbInfoFromEnv("root:password123@tcp(localhost:3306)/simple_messages_app"),
 	)
 
 	if err != nil {
