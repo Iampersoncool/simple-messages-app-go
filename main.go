@@ -9,7 +9,7 @@ import (
 
 func main() {
 	db, err := ConnectDatabase(
-		GetDbInfoFromEnv("simple_messages_app", "root", "password123"),
+		GetDbInfoFromEnv("localhost", "simple_messages_app", "root", "password123"),
 	)
 
 	if err != nil {
