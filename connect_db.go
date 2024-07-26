@@ -6,8 +6,9 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
-func ConnectDatabase(dbName, username, password string) (*sql.DB, error) {
+func ConnectDatabase(dbName, addr, username, password string) (*sql.DB, error) {
 	config := mysql.NewConfig()
+	config.Addr = addr
 	config.DBName = dbName
 	config.User = username
 	config.Passwd = password
